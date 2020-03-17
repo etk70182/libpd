@@ -16,7 +16,7 @@ set(LOCAL_PTHREADS_FILES
   )
 
 
-add_custom_target(PTHREAD_deps
+add_custom_target(local_pthreads
   WORKING_DIRECTORY
     ${CMAKE_CURRENT_BINARY_DIR}
   DEPENDS
