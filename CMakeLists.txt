@@ -8,8 +8,8 @@ option(PD_LOCALE "Set the LC_NUMERIC number format to the default C locale" ON)
 option(PD_BUILD_C_EXAMPLES "Builds C API example programs" OFF)
 
 if (MSVC)
-    set(CMAKE_THREAD_LIBS_INIT "${CMAKE_CURRENT_SOURCE_DIR}/libs/x64/pthreadVC2.lib")
-    set(PTHREADS_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/pthreads_win32")
+    option(CMAKE_THREAD_LIBS_INIT "Path to pthreads library")
+    option(PTHREADS_INCLUDE_DIR   "Path to the pthreads library header files")
     # We need pthreads.
     # Please provide the path to the pthreads library include path and
     # the path to the pthread library by specifying the following arguments
@@ -17,7 +17,8 @@ if (MSVC)
     # -DCMAKE_THREAD_LIBS_INIT:PATH=<path to library, either MSVC (for example pthreadVC2.lib) or GNUC version>
     # -DPTHREADS_INCLUDE_DIR:PATH=<path to the pthread header files>
     if (NOT CMAKE_THREAD_LIBS_INIT OR NOT PTHREADS_INCLUDE_DIR)
-        message(FATAL_ERROR "Please provide a path to the pthreads library and its headers.")
+		# Otherwise use pre-built libraries provided in subdirectory.
+		add_subdirectory(deps)
     endif()
     # Prefer pthread implementation on platforms where multiple are available.
     set(CMAKE_THREAD_PREFER_PTHREAD ON)
