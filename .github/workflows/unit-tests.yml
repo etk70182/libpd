@@ -18,6 +18,9 @@ jobs:
       run: git submodule update --init --recursive
     - name: Make Build Directory
       run: mkdir build
+    - name: List dir
+      run: ls -l ../include/pthreads_win32/
+      working-directory: ./build
     - name: CMake Configuration
       run: cmake -DCMAKE_THREAD_LIBS_INIT:PATH=../libs/x64/pthreadVC2.lib -DPTHREADS_INCLUDE_DIR:PATH=../include/pthreads_win32/ ..
       working-directory: ./build
