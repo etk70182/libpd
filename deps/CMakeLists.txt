@@ -6,8 +6,9 @@ set(LOCAL_PTHREADS_HEADERS
   ${LOCAL_PTHREADS_INCLUDE_DIR}/semaphore.h
   )
 
+if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
 set(LIB_SUBDIRECTORY x64)
-if(WIN32)
+else()
 set(LIB_SUBDIRECTORY x86)
 endif()
 
