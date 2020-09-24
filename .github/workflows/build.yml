@@ -27,3 +27,9 @@ jobs:
     - name: Build
       run: cmake --build .
       working-directory: ./build
+    # Upload artifacts
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}-artifacts
+        path: ./build/
