@@ -1,5 +1,9 @@
 name: build
-on: [push, pull_request]
+
+on:
+  push:
+    branches:
+    - brln_windows_deployment_fix
 
 jobs:
   build:
@@ -10,6 +14,8 @@ jobs:
         os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
+    - name: Clone subprojects
+      run: git submodule update --init --recursive
     - name: Make Build Directory
       run: mkdir build
     - name: Configuration
