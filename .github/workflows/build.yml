@@ -3,8 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    needs: [codecheck]
-    name: Unit Test Stage
+    name: Build Stage
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
