@@ -22,7 +22,7 @@ jobs:
       run: cmake -DPD_MULTI=ON -DPD_UTILS=OFF -DMSVC_STATIC_RUNTIME=ON ..
       working-directory: ./build
     - name: List all targets
-      run: cmake --build . --target help
+      run: cmake --build .
       working-directory: ./build
     - name: Build
       run: cmake --build .
